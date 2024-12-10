@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/features/common/utils";
 
 const textVariants = cva("select-none transition-colors", {
   variants: {
@@ -24,7 +25,9 @@ export interface TextProps
     VariantProps<typeof textVariants> {}
 
 const Text: React.FC<TextProps> = ({ className, variant, ...props }) => {
-  return <span className={textVariants({ variant, className })} {...props} />;
+  return (
+    <span className={cn(textVariants({ variant, className }))} {...props} />
+  );
 };
 
 Text.displayName = "Text";
