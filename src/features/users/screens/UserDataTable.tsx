@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { CommonTable } from "@/features/common/components/molecules/Table";
 import { TableCell } from "@/features/common/components/atoms/table";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Search } from "lucide-react";
 import { Ban, Trash2 } from "lucide-react";
 import { Pagination } from "@/features/common/components/molecules/Pagination";
 // import { getAllUser } from "@/features/users/actions/user-actions"; // Commented out API import
@@ -91,8 +91,18 @@ export default function UserDataTable() {
     <div className="p-6">
       <div className="flex">
         <h1 className="text-2xl font-bold mb-6">Users</h1>
-        <div className="flex justify-end">
-          <Input placeholder="Search" type="text" className="w-[30vh]" />
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <input
+            type="text"
+            placeholder="Search..."
+            style={{
+              padding: "8px",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              outline: "none",
+            }}
+          />
+          <Search size={20} color="gray" />
         </div>
       </div>
 
