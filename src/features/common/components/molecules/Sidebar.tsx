@@ -26,20 +26,20 @@ const Sidebar: React.FC<SidebarProps> = ({
   const menuItems = [
     {
       name: "Users",
-      icon: `/assets/images/userinactive.png`,
-      activeIcon: `/assets/images/useractive.png`,
+      icon: `/assets/images/usersInactive.png`,
+      activeIcon: `/assets/images/usersActive.png`,
       path: `/users`,
     },
     {
       name: "Feedback",
-      icon: `/assets/images/feedbackinactive.png`,
-      activeIcon: `/assets/images/feedbackactive.png`,
+      icon: `/assets/images/feedbackInactive.png`,
+      activeIcon: `/assets/images/feedbackActive.png`,
       path: `/feedback`,
     },
     {
       name: "Posts",
-      icon: `/assets/images/postinactive.png`,
-      activeIcon: `/assets/images/postactive.png`,
+      icon: `/assets/images/PostInactive.png`,
+      activeIcon: `/assets/images/PostActive.png`,
       path: `/posts`,
     },
   ];

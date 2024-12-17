@@ -3,7 +3,6 @@ import { BASE_URL } from "@/features/libs/utils/config";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-// Define the type for payload
 interface LoginPayload {
   email: string;
   password: string;

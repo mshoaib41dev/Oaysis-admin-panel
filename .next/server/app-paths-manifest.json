@@ -1,10 +1,8 @@
 {
-<<<<<<< HEAD
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/login/page": "app/login/page.js",
   "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
-  "/(dashboard)/users/page": "app/(dashboard)/users/page.js"
-=======
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js"
->>>>>>> 8266d1d664d9ac2300d831f43f5fc7440946b5cb
+  "/(dashboard)/users/page": "app/(dashboard)/users/page.js",
+  "/(dashboard)/feedback/page": "app/(dashboard)/feedback/page.js"
 }

@@ -1,10 +1,5 @@
-<<<<<<< HEAD:.next/types/app/login/page.ts
 // File: D:\oaysis-admin-panel\src\app\login\page.tsx
 import * as entry from '../../../../src/app/login/page.js'
-=======
-// File: /Users/dev/Desktop/oaysis-admin-panel/src/app/page.tsx
-import * as entry from '../../../src/app/page.js'
->>>>>>> 8266d1d664d9ac2300d831f43f5fc7440946b5cb:.next/types/app/page.ts
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
 type TEntry = typeof import('../../../../src/app/login/page.js')

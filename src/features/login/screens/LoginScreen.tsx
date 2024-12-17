@@ -75,9 +75,9 @@ export default function LoginScreen() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 bg-white">
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-end">
+      <div className="w-full max-w-6xl  gap-8 items-end">
         {/* Left side with illustration */}
-        <div className="hidden lg:flex justify-center">
+        {/* <div className="hidden lg:flex justify-center">
           <div className="relative w-full max-w-md">
             <Image
               src="/assets/images/login.png"
@@ -87,7 +87,7 @@ export default function LoginScreen() {
               height={500}
             />
           </div>
-        </div>
+        </div> */}
 
         <div className="w-full max-w-md mx-auto space-y-6 -mt-20">
           <div className="space-y-2 text-center mb-5">
@@ -159,7 +159,7 @@ export default function LoginScreen() {
                 />
               </div>
               <Button
-                className="w-full h-14 !mt-10 !bg-lightBlue text-white hover:bg-emerald-600"
+                className="w-full h-14 !mt-10 !bg-gradient-to-r from-[#0290BE]  to-[#0DBF91] text-white hover:bg-emerald-600"
                 type="submit"
               >
                 Login

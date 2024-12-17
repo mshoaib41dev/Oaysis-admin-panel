@@ -21,6 +21,8 @@ export const getAllUser = async (page?: number, itemsPerPage?: number) => {
   }
 
   let url = `${BASE_URL}/api/user/getallusers/`;
+  console.log("Apppppppooooo URL", url);
+
   if (page || itemsPerPage) {
     url += `?page=${page}&limit=${itemsPerPage}`;
   }
