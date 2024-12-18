@@ -71,16 +71,6 @@ const UserDetailModel = ({ open, setOpen }: ViewProfileModalProps) => {
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="flex space-x-2">
               <TabsTrigger
-                value="Posts"
-                className={`py-2 px-4 rounded-md transition-colors ${
-                  activeTab === "Posts"
-                    ? "!bg-gradient-to-b from-[#0290BE]  to-[#0DBF91]"
-                    : "bg-gray-200 text-black"
-                }`}
-              >
-                Posts
-              </TabsTrigger>
-              <TabsTrigger
                 value="Accounts"
                 className={`py-2 px-4 rounded-md transition-colors ${
                   activeTab === "Accounts"
@@ -90,47 +80,18 @@ const UserDetailModel = ({ open, setOpen }: ViewProfileModalProps) => {
               >
                 Associated Accounts
               </TabsTrigger>
-            </TabsList>
 
-            <TabsContent value="Posts">
-              <div className="mt-5">
-                <CommonTable
-                  headers={headers}
-                  data={staticUsers}
-                  renderRow={(user: User) => (
-                    <>
-                      <TableCell className="py-2">{user.id}</TableCell>
-                      <TableCell className="px-4 py-2">
-                        <Image
-                          src="/assets/images/login.png"
-                          alt="Login illustration"
-                          className="dark:invert"
-                          width={50}
-                          height={50}
-                        />
-                      </TableCell>
-                      <TableCell className="px-4 py-2">
-                        {user.mobile_number ? user.mobile_number : "null"}
-                      </TableCell>
-                      <TableCell className="px-4 py-2">
-                        {user.isEmailVerified ? "Verified" : "UnVerified"}
-                      </TableCell>
-                      <TableCell className="px-4 py-2">
-                        {user.profiles.length}
-                      </TableCell>
-                      <TableCell className="px-4 py-2 flex justify-end space-x-2 justify-around">
-                        <Button
-                          variant="ghost"
-                          onClick={() => console.log("View user:", user)}
-                        >
-                          View
-                        </Button>
-                      </TableCell>
-                    </>
-                  )}
-                />
-              </div>
-            </TabsContent>
+              <TabsTrigger
+                value="Posts"
+                className={`py-2 px-4 rounded-md transition-colors ${
+                  activeTab === "Posts"
+                    ? "!bg-gradient-to-b from-[#0290BE]  to-[#0DBF91]"
+                    : "bg-gray-200 text-black"
+                }`}
+              >
+                Posts
+              </TabsTrigger>
+            </TabsList>
 
             <TabsContent value="Accounts">
               <div className="flex mt-7">
@@ -159,21 +120,69 @@ const UserDetailModel = ({ open, setOpen }: ViewProfileModalProps) => {
                 </div>
               </div>
             </TabsContent>
+
+            <TabsContent value="Posts">
+              <div className="mt-5">
+                <CommonTable
+                  headers={headers}
+                  data={staticUsers}
+                  renderRow={(user: User) => (
+                    <>
+                      <TableCell className="py-2">{user.id}</TableCell>
+                      <TableCell className="px-4 py-2">
+                        <Image
+                          src="/assets/images/login.png"
+                          alt="Login illustration"
+                          className="dark:invert"
+                          width={50}
+                          height={50}
+                        />
+                      </TableCell>
+                      <TableCell className="px-4 py-2">
+                        {user.mobile_number ? user.mobile_number : "null"}
+                      </TableCell>
+                      <TableCell className="px-4 py-2">
+                        {user.isEmailVerified ? "Verified" : "UnVerified"}
+                      </TableCell>
+                      <TableCell className="px-4 py-2">
+                        {user.profiles.length}
+                      </TableCell>
+                      <TableCell className="px-4 py-2 flex justify-center ">
+                        <Button
+                          variant="ghost"
+                          onClick={() => console.log("View user:", user)}
+                        >
+                          View
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          onClick={() => console.log("View user:", user)}
+                        >
+                          Block
+                        </Button>
+                      </TableCell>
+                    </>
+                  )}
+                />
+              </div>
+            </TabsContent>
           </Tabs>
-          <div className="flex justify-end ">
-            <Button variant="default" size="sm" className="mt-4 w-[100px]">
-              Block User
-            </Button>
-            <div className="ml-5">
-              <Button
-                variant="default"
-                size="sm"
-                className="mt-4 w-[100px] mr-5"
-              >
-                Close
+          {activeTab === "Accounts" && (
+            <div className="flex justify-end ">
+              <Button variant="default" size="sm" className="mt-4 w-[100px]">
+                Block User
               </Button>
+              <div className="ml-2">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="mt-4 w-[100px] mr-2"
+                >
+                  Close
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </DialogContent>
       </Dialog>
     </>

@@ -91,18 +91,18 @@ export default function UserDataTable() {
     <div className="p-6">
       <div className="flex">
         <h1 className="text-2xl font-bold mb-6">Users</h1>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+
+        <div className="relative  w-[30vh]">
           <input
             type="text"
             placeholder="Search..."
-            style={{
-              padding: "8px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              outline: "none",
-            }}
+            className="pl-5 pr-4 py-2 border border-gray-300 rounded-md outline-none w-full"
           />
-          <Search size={20} color="gray" />
+          <Search
+            size={20}
+            color="gray"
+            className="absolute left-[25vh]  top-1/3 transform -translate-y-1/3"
+          />
         </div>
       </div>
 

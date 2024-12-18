@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Text } from "@/features/common/components/atoms/Text";
 import { logo } from "../../../../../public/assets";
 import { AiOutlineClose } from "react-icons/ai";
+import LogoutModal from "@/features/common/components/molecules/LogoutModal";
+
 interface SidebarProps {
   isExpanded?: boolean;
   toggleSidebar?: () => void;
@@ -20,10 +22,20 @@ const Sidebar: React.FC<SidebarProps> = ({
   const pathname = usePathname();
 
   const [isSidebarExpanded, setSidebarExpanded] = useState<boolean>(true);
+  // const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
+
   const toggleSidebar = () => {
     setSidebarExpanded(!isSidebarExpanded);
   };
+
   const menuItems = [
+    {
+      name: "Dashboard",
+      icon: `/assets/images/menuInActive.png`,
+      activeIcon: `/assets/images/menuActive.png`,
+      path: `/dashboard`,
+    },
     {
       name: "Users",
       icon: `/assets/images/usersInactive.png`,
@@ -42,7 +54,24 @@ const Sidebar: React.FC<SidebarProps> = ({
       activeIcon: `/assets/images/PostActive.png`,
       path: `/posts`,
     },
+    {
+      icon: `/assets/images/logout.png`,
+      name: "Logout",
+    },
   ];
+
+  const handleLogoutClick = () => {
+    setDialogOpen(true);
+  };
+
+  const handleConfirmLogout = () => {
+    setDialogOpen(false);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
   useEffect(() => {
     if (expandOnly) {
       setSidebarExpanded(true);
@@ -132,7 +161,11 @@ const Sidebar: React.FC<SidebarProps> = ({
               {menuItems.map((item) => (
                 <li key={item.name}>
                   <div
-                    onClick={() => router.push(item.path)}
+                    onClick={
+                      item.name === "Logout"
+                        ? handleLogoutClick
+                        : () => router.push(item.path)
+                    }
                     className={`flex flex-row items-center space-x-3 px-5 py-3 rounded-[16px] cursor-pointer w-full hover:bg-background-aliceBlue ${
                       pathname === item.path
                         ? "bg-background-aliceBlue"
@@ -157,6 +190,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                       } ${
                         pathname === item.path
                           ? "text-typography-orange"
+                          : item.name === "Logout"
+                          ? "text-red-500"
                           : "text-typography-darkBlue"
                       }`}
                     >
@@ -168,6 +203,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             </ul>
           </nav>
         </div>
+        {isDialogOpen && <LogoutModal onClose={handleCloseDialog} />}
       </aside>
     </div>
   );

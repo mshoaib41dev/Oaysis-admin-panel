@@ -41,3 +41,31 @@ export const login = async (payload: LoginPayload) => {
     return { success: false, message: "An error occurred during login." };
   }
 };
+
+const getAccessToken = async () => {
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token");
+    return token ? token.value : null;
+  } catch (error) {
+    console.error("Failed to get access token:", error);
+    return null;
+  }
+};
+
+export const logoutUser = async () => {
+  const token = await getAccessToken();
+
+  if (!token) {
+    console.error("Access Token Expired");
+    return null;
+  }
+
+  if (token) {
+    const cookieJar = cookies();
+    (await cookieJar).delete("token");
+    return { success: true, message: "User Logout Sussessfully" };
+  } else {
+    return { success: false, message: "User Logout Failed" };
+  }
+};
