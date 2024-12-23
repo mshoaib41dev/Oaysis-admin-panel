@@ -46,7 +46,7 @@ const CampaignChart = ({ campaigns = campaignsData }) => {
   };
 
   return (
-    <div style={{ width: "400px", height: "300px" }}>
+    <div style={{ width: "200px", height: "300px" }}>
       <Doughnut data={doughnutChartData} options={chartOptions} />
     </div>
   );

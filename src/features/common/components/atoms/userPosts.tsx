@@ -84,7 +84,7 @@ const PostsLineChart = ({ posts = postsData }) => {
   };
 
   return (
-    <div style={{ width: "600px", height: "400px" }}>
+    <div style={{ width: "300px", height: "400px" }}>
       <Line data={lineChartData} options={chartOptions} />
     </div>
   );

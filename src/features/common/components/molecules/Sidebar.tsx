@@ -55,6 +55,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       path: `/posts`,
     },
     {
+      name: "3D Photos",
+      icon: `/assets/images/PostInactive.png`,
+      activeIcon: `/assets/images/PostActive.png`,
+      path: `/3dphoto`,
+    },
+    {
       icon: `/assets/images/logout.png`,
       name: "Logout",
     },

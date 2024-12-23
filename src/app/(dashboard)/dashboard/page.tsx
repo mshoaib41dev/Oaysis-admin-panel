@@ -50,13 +50,13 @@ const DashboardStats: React.FC<DashboardPageProps> = ({ ...props }) => {
         ))}
       </div>
       <div className="flex flex-row gap-4 p-4 w-full overflow-hidden">
-        <div className="bg-white rounded-md p-4 shadow w-1/3">
-          <UserChart /> {/* UserChart below New Users */}
+        <div className="">
+          <UserChart page="dashboard" />
         </div>
-        <div className="bg-white rounded-md p-4 shadow w-1/3">
-          <UserPosts /> {/* UserPosts below New Posts */}
+        <div className="bg-white rounded-md p-4 shadow w-1/2">
+          <UserPosts />
         </div>
-        <div className="bg-white rounded-md p-4 shadow w-1/3">
+        <div className="bg-white rounded-md p-4 shadow w-1/2">
           <UserCards />
         </div>
       </div>
