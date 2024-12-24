@@ -56,9 +56,33 @@ const Sidebar: React.FC<SidebarProps> = ({
     },
     {
       name: "3D Photos",
-      icon: `/assets/images/PostInactive.png`,
-      activeIcon: `/assets/images/PostActive.png`,
+      icon: `/assets/images/3dPhotoInactive.png`,
+      activeIcon: `/assets/images/3dPhotoActive.png`,
       path: `/3dphoto`,
+    },
+    {
+      name: "Voice",
+      icon: `/assets/images/VoiceInactive.png`,
+      activeIcon: `/assets/images/VoiceActive.png`,
+      path: `/Voice`,
+    },
+    {
+      name: "Chatbot",
+      icon: `/assets/images/ChatbotINactive.png`,
+      activeIcon: `/assets/images/ChatbotActive.png`,
+      path: `/Voice`,
+    },
+    {
+      name: "VideoCall",
+      icon: `/assets/images/VideoInactive.png`,
+      activeIcon: `/assets/images/VideoActive.png`,
+      path: `/Voice`,
+    },
+    {
+      name: "AudioCall",
+      icon: `/assets/images/CallInActive.png`,
+      activeIcon: `/assets/images/CallActive.png`,
+      path: `/Voice`,
     },
     {
       icon: `/assets/images/logout.png`,
