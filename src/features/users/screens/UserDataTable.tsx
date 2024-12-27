@@ -75,7 +75,11 @@ export default function UserDataTable() {
   const getPosts = async (id: string) => {
     const response1 = await getPostsByID(id);
     console.log("Posts Data", response1);
+<<<<<<< HEAD
   };  
+=======
+  };
+>>>>>>> b95210efef174267adbdfe06d9f0a8adabccd342
   useEffect(() => {
     const userId = selectedUser?.id;
     if (userId) {
