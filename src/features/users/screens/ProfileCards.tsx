@@ -1,27 +1,35 @@
 import React from "react";
-interface ViewProfileModalProps {
-  user: User | null;
-}
-const UserDetailModel = ({ user, email }: ViewProfileModalProps) => {
-  const ProfileCards = () => {
-    return (
-      <div className="flex justify-between ">
-        <div className="border rounded-lg p-5">
-          <h3 className="font-bold ">Name</h3>
-          {/* <p>{user.first_name + " " + user.last_name}</p> */}
-          {/* <h3 className="font-bold">Email</h3>
-          <p>{user.email}</p> */}
-          {/* <h3 className="font-bold">Mobile Number</h3>
-          <p>{user.mobile_number || "N/A"}</p> */}
-          <h3 className="font-bold">Email Verified</h3>
-          {/* <p>{user.isEmailVerified ? "Yes" : "No"}</p> */}
-          <h3 className="font-bold">Profile Complete</h3>
-          {/* <p>{user.profiles.length > 0 ? "Yes" : "No"}</p> */}
-        </div>
-      </div>
-    );
-  };
 
-  return <ProfileCards />;
+interface Profile {
+  id: number;
+  first_name: string;
+  last_name: string;
+  username: string;
+  is_private: boolean;
+  mute_status: boolean | null;
+}
+
+interface ProfileCardsProps {
+  user: Profile;
+}
+
+const ProfileCards: React.FC<ProfileCardsProps> = ({ user }) => {
+  console.log("USERSSSSSS", user);
+
+  return (
+    <div className="border rounded-lg p-5 border-gray-300">
+      <h4 className="font-semibold mt-2">
+        Name: {user.first_name + " " + user.last_name}
+      </h4>
+      <h4 className="font-semibold mt-2">Username: {user.username}</h4>
+      <p className="font-semibold mt-2">
+        Is Private: {user.is_private ? "Yes" : "No"}
+      </p>
+      <p className="font-semibold mt-2">
+        Mute Status: {user.mute_status ? "Muted" : "Not Muted"}
+      </p>
+    </div>
+  );
 };
-export default UserDetailModel;
+
+export default ProfileCards;
