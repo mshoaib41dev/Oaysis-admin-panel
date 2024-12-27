@@ -10,7 +10,8 @@ interface LoginPayload {
 
 export const login = async (payload: LoginPayload) => {
   try {
-    const response = await fetch(`${BASE_URL}/api/user/login/`, {
+    // const response = await fetch(`${BASE_URL}/api/user/login/`, {
+    const response = await fetch(`${BASE_URL}/api/admin/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

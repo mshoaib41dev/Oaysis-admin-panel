@@ -43,14 +43,14 @@ const DashboardStats: React.FC<DashboardPageProps> = ({ ...props }) => {
 
               <Text className="font-semibold text-2xl my-4 ">
                 {card.amount}
-              </Text>
+              </Text>       
               <Text className="text-lg font-normal ">{card.preview}</Text>
             </div>
           </div>
         ))}
       </div>
       <div className="flex flex-row gap-4 p-4 w-full overflow-hidden">
-        <div className="">
+        <div className=" bg-white rounded-md p-4 shadow w-1/2">
           <UserChart page="dashboard" />
         </div>
         <div className="bg-white rounded-md p-4 shadow w-1/2">

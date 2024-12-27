@@ -2,14 +2,14 @@
 import React, { useState, useEffect } from "react";
 import { CommonTable } from "@/features/common/components/molecules/Table";
 import { TableCell } from "@/features/common/components/atoms/table";
-import { Eye, EyeOff, Search } from "lucide-react";
+import { Eye, Search } from "lucide-react";
 import { Ban, Trash2 } from "lucide-react";
 import { Pagination } from "@/features/common/components/molecules/Pagination";
-// import { getAllUser } from "@/features/users/actions/user-actions"; // Commented out API import
 import { Button } from "@/features/common/components/atoms/button";
 import UserDetailModel from "@/features/users/screens/UserDetailModel";
 import { Input } from "@/features/common/components/atoms/input";
 import { getAllUser } from "../actions/user-actions";
+import { getPostsByID } from "../actions/user-actions";
 
 interface User {
   id?: string;
@@ -18,25 +18,6 @@ interface User {
   isEmailVerified: boolean;
   profiles: any[];
 }
-
-// Static data for users
-// const staticUsers: User[] = [
-//   {
-//     id: "1",
-//     email: "user1@example.com",
-//     mobile_number: "1234567890",
-//     isEmailVerified: true,
-//     profiles: [],
-//   },
-//   {
-//     id: "2",
-//     email: "user2@example.com",
-//     mobile_number: "0987654321",
-//     isEmailVerified: false,
-//     profiles: [],
-//   },
-//   // Add more static users as needed
-// ];
 
 const headers = [
   { key: "id", label: "ID" },
@@ -65,34 +46,48 @@ export default function UserDataTable() {
 
   const getData = async (page: number, itemsPerPage: number) => {
     const response = await getAllUser(page, itemsPerPage);
-    console.log("Response Check", response);
+    // console.log("Response Check", response?.users?.results);
 
-    setUserDataLength(response?.data?.length);
     if (response) {
-      const transformedData = response?.map((item: User) => ({
+      const transformedData = response?.users?.results?.map((item: User) => ({
         id: item.id,
         email: item.email,
         mobile_number: item.mobile_number,
         isEmailVerified: item.isEmailVerified,
-        // profiles: item.profiles,
+        profiles: item.profiles.map((profile) => ({
+          first_name: profile.first_name,
+          last_name: profile.last_name,
+          username: profile.username,
+          is_private: profile.is_private,
+          mute_status: profile.mute_status,
+        })),
       }));
       console.log("Transformed Data", transformedData);
       setUserData(transformedData);
       setUserDataLength(transformedData.length);
     }
   };
-  console.log("User Data", userData);
 
   useEffect(() => {
     getData(currentPage, itemsPerPage);
   }, [currentPage, itemsPerPage]);
 
+  const getPosts = async (id: string) => {
+    const response1 = await getPostsByID(id);
+    console.log("Posts Data", response1);
+  };  
+  useEffect(() => {
+    const userId = selectedUser?.id;
+    if (userId) {
+      getPosts(userId);
+    }
+  }, [selectedUser]);
+
   return (
     <div className="p-6">
       <div className="flex">
         <h1 className="text-2xl font-bold mb-6">Users</h1>
-
-        <div className="relative  w-[30vh]">
+        <div className="relative w-[30vh]">
           <input
             type="text"
             placeholder="Search..."
@@ -101,7 +96,7 @@ export default function UserDataTable() {
           <Search
             size={20}
             color="gray"
-            className="absolute left-[25vh]  top-1/3 transform -translate-y-1/3"
+            className="absolute left-[25vh] top-1/3 transform -translate-y-1/3"
           />
         </div>
       </div>
@@ -119,7 +114,9 @@ export default function UserDataTable() {
             <TableCell className="px-4 py-2">
               {user?.isEmailVerified ? "Verified" : "UnVerified"}
             </TableCell>
-            <TableCell className="px-4 py-2">{user?.profiles}</TableCell>
+            <TableCell className="px-4 py-2">
+              {user.profiles.length || 0}
+            </TableCell>
             <TableCell className="px-4 py-2 flex justify-end space-x-2 justify-around">
               <Eye
                 className="h-4 w-4 text-muted-foreground"
