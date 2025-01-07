@@ -46,8 +46,6 @@ export default function UserDataTable() {
 
   const getData = async (page: number, itemsPerPage: number) => {
     const response = await getAllUser(page, itemsPerPage);
-    // console.log("Response Check", response?.users?.results);
-
     if (response) {
       const transformedData = response?.users?.results?.map((item: User) => ({
         id: item.id,
@@ -75,17 +73,7 @@ export default function UserDataTable() {
   const getPosts = async (id: string) => {
     const response1 = await getPostsByID(id);
     console.log("Posts Data", response1);
-<<<<<<< HEAD
-  };  
-=======
   };
->>>>>>> b95210efef174267adbdfe06d9f0a8adabccd342
-  useEffect(() => {
-    const userId = selectedUser?.id;
-    if (userId) {
-      getPosts(userId);
-    }
-  }, [selectedUser]);
 
   return (
     <div className="p-6">
@@ -121,7 +109,7 @@ export default function UserDataTable() {
             <TableCell className="px-4 py-2">
               {user.profiles.length || 0}
             </TableCell>
-            <TableCell className="px-4 py-2 flex justify-end space-x-2 justify-around">
+            <TableCell className="px-4 py-2 flex justify-end space-x-2">
               <Eye
                 className="h-4 w-4 text-muted-foreground"
                 onClick={() => {

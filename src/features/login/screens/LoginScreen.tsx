@@ -75,9 +75,8 @@ export default function LoginScreen() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 bg-white">
-      <div className="w-full max-w-6xl  gap-8 items-end">
-        {/* Left side with illustration */}
-        {/* <div className="hidden lg:flex justify-center">
+      {/* Left side with illustration */}
+      {/* <div className="hidden lg:flex justify-center">
           <div className="relative w-full max-w-md">
             <Image
               src="/assets/images/login.png"
@@ -89,84 +88,84 @@ export default function LoginScreen() {
           </div>
         </div> */}
 
-        <div className="w-full max-w-md mx-auto space-y-6 -mt-20">
-          <div className="space-y-2 text-center mb-5">
-            <Image
-              src="/assets/images/logo.png"
-              alt="DevSoul Logo"
-              className="dark:invert ml-[18vh]"
-              width={200}
-              height={300}
-            />
-            <h1 className="text-3xl font-bold tracking-tight">Welcome Back!</h1>
-          </div>
-          <Form {...form}>
-            <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="space-y-2">
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email / User Name</FormLabel>
+      <div className="w-full max-w-md mx-auto space-y-6 -mt-20">
+        <div className="space-y-2 text-center mb-5">
+          <Image
+            src="/assets/Images/logo.png"
+            alt="Login illustration"
+            width={50}
+            height={50}
+            className="w-[150px] h-[100px] ml-[13vw]"
+          />
+
+          <h1 className="text-3xl font-bold tracking-tight">Welcome Back!</h1>
+        </div>
+        <Form {...form}>
+          <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="space-y-2">
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email / User Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter email / user name"
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="space-y-2">
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <div className="relative">
                       <FormControl>
                         <Input
-                          placeholder="Enter email / user name"
-                          type="text"
+                          placeholder="Password"
+                          type={showPassword ? "text" : "password"}
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="space-y-2">
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
-                      <div className="relative">
-                        <FormControl>
-                          <Input
-                            placeholder="Password"
-                            type={showPassword ? "text" : "password"}
-                            {...field}
-                          />
-                        </FormControl>
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="sm"
-                          className="absolute right-2 top-1/2 -translate-y-1/2 hover:bg-transparent"
-                          onClick={() => setShowPassword(!showPassword)}
-                        >
-                          {showPassword ? (
-                            <EyeOff className="h-4 w-4 text-muted-foreground" />
-                          ) : (
-                            <Eye className="h-4 w-4 text-muted-foreground" />
-                          )}
-                          <span className="sr-only">
-                            {showPassword ? "Hide password" : "Show password"}
-                          </span>
-                        </Button>
-                      </div>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <Button
-                className="w-full h-14 !mt-10 !bg-gradient-to-r from-[#0290BE]  to-[#0DBF91] text-white hover:bg-emerald-600"
-                type="submit"
-              >
-                Login
-              </Button>
-            </form>
-          </Form>
-        </div>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 hover:bg-transparent"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-4 w-4 text-muted-foreground" />
+                        ) : (
+                          <Eye className="h-4 w-4 text-muted-foreground" />
+                        )}
+                        <span className="sr-only">
+                          {showPassword ? "Hide password" : "Show password"}
+                        </span>
+                      </Button>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <Button
+              className="w-full h-14 !mt-10 !bg-gradient-to-r from-[#0290BE]  to-[#0DBF91] text-white hover:bg-emerald-600"
+              type="submit"
+            >
+              Login
+            </Button>
+          </form>
+        </Form>
       </div>
     </div>
   );

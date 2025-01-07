@@ -85,6 +85,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       path: `/Voice`,
     },
     {
+      name: "Reports",
+      icon: `/assets/images/reportINACTIVE.png`,
+      activeIcon: `/assets/images/report.png`,
+      path: `/reports`,
+    },
+    {
       icon: `/assets/images/logout.png`,
       name: "Logout",
     },

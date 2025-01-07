@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsTrigger, TabsList } from "@radix-ui/react-tabs";
 import { TableCell } from "@/features/common/components/atoms/table";
 import { CommonTable } from "@/features/common/components/molecules/Table";
 import Image from "next/image";
+import { boolean } from "zod";
 
 interface ViewProfileModalProps {
   open: boolean;
@@ -125,7 +126,7 @@ const UserDetailModel = ({ open, setOpen, user }: ViewProfileModalProps) => {
                     <TableCell className="py-2">{user.id}</TableCell>
                     <TableCell className="px-4 py-2">
                       <Image
-                        src="/assets/images/login.png"
+                        src="/assets/Images/logo.png"
                         alt="Login illustration"
                         className="dark:invert"
                         width={50}

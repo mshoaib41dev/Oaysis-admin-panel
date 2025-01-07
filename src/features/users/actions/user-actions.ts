@@ -79,3 +79,33 @@ export const getPostsByID = async (id: string) => {
     return null;
   }
 };
+
+// export const activeDeactivateUserByAdmin = async (
+//   payload: activeDeactivatePayload
+// ) => {
+//   const token = await getAccessToken();
+//   if (!token) {
+//     console.error("Access token is not available.");
+//     return null;
+//   }
+
+//   try {
+//     const response = await fetch(`${BASE_URL}/api/admin/userPosts/${id}`, {
+//       method: "GET",
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         "Content-Type": "application/json",
+//       },
+//     });
+
+//     if (!response.ok) {
+//       throw new Error(`Error fetching posts: ${response.statusText}`);
+//     }
+
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Failed to fetch posts:", error);
+//     return null;
+//   }
+// };
